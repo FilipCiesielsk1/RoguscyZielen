@@ -1,0 +1,450 @@
+/* Reset and Normalize */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* CSS Variables */
+:root {
+  --green-v-light: #edf6ee;
+  --green-light: #e8f5e9;
+  --green-main:  #4caf50;
+  --green-dark: #50a557;
+  --green-v-dark: #205625;
+  --white:       #ffffff;
+  --text-color:  #333333;
+  --font-family: "Ebrima", sans-serif;
+}
+html, body {
+  height: 100%;
+  font-family: var(--font-family);
+}
+
+
+/* Global Links and Images */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Container Utility */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header and Navigation */
+header {
+  position: sticky; /* przyklejony do góry */
+  top: 0;
+  z-index: 1000; /* nad innymi elementami */
+  background-color: var(--green-v-light);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* delikatny cień */
+  transition: background 0.3s ease;
+}
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0;
+}
+
+/* Logo */
+.logo img {
+  height: 85px;
+  transition: transform 0.3s ease, height 0.45s ease;
+  box-shadow:  3px 3px 8px rgba(0,0,0,0.1);
+}
+.logo img:hover {
+  transform: scale(1.1);
+}
+
+header.scrolled .logo img {
+  height: 55px;
+}
+
+/* Navigation List */
+.nav__list {
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+}
+.nav__link {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: color 0.3s;
+}
+.nav__link:hover,
+.nav__link:focus {
+  color: var(--green-main);
+}
+
+/* Dropdown menu */
+.nav__item {
+  position: relative; /* pozycjonowanie kontekstu dla menu podrzędnego */
+}
+.dropdown__list {
+  position: absolute;
+  top: 100%;         /* zaraz pod pozycją rodzica */
+  left: -50%;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  flex-direction: column;
+  background: var(--green-v-light);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  list-style: none;
+  min-width: 150px;
+  z-index: 10;
+}
+.dropdown__link {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--text-color);
+  transition: background 0.2s;
+}
+.dropdown__link:hover,
+.dropdown__link:focus {
+  background: var(--green-light);
+  color: var(--green-main);
+}
+/* Pokaż submenu na hover */
+.dropdown:hover .dropdown__list {
+  max-height: 3000px; /* dostosuj wartość do wysokości menu */
+  opacity: 1;
+}
+
+/* Social Icon */
+.social img {
+  height: 24px;
+  width: 24px;
+  transition: transform 0.3s ease;
+}
+.social img:hover,
+.social img:focus {
+  transform: scale(1.111);
+}
+/* Slider pełno-szerokościowy */
+.slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+
+
+/* Kontener slajdów w rzędzie */
+.slider{
+  height: 600px;
+}
+.slides {
+  display: flex;
+  width: 100%;              /* 5 obrazków po 100% */
+  height: 100%;           /* <<< dodaj tę linię */
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Pojedynczy slajd */
+.slide {
+  flex: 0 0 100%;           /* każdy zajmuje 100% szerokości rodzica */
+}
+.slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;            
+  object-position: center bottom; /* <<< wyrównanie dolnej krawędzi */
+
+}
+
+.slider__overlay {
+  position: absolute;
+  top: 25%;
+  left: 0;
+  width: 100%;                          /* pełna szerokość slidera */
+  transform: translateY(-50%);          /* wyśrodkowanie pionowe */
+  background: rgba(0, 0, 0, 0.631);  /* półprzezroczyste tło */
+  padding-top: 0rem;
+  padding-bottom: 1rem;
+  font-size: 4.5rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.792);
+  text-align: center;                    /* tekst na środku */
+  pointer-events: none;
+  z-index: 6;
+}
+
+/* Slider: przyciski prev/next */
+.slider__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 6rem;
+  color: rgba(255,255,255,0.66);
+  line-height: 1;
+  padding: 0.25rem 0.75rem;
+  cursor: pointer;
+  z-index: 5;
+  transition: color 0.3s;
+}
+.slider__btn:hover {
+  color: rgba(255,255,255);
+}
+.slider__btn--prev {
+  left: 1rem;
+}
+.slider__btn--next {
+  right: 1rem;
+}
+
+/* Slider: paginacja kropki */
+.slider__pagination {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 5;
+}
+.pagination__dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+.pagination__dot.active{
+  background: var(--green-main);
+  transform: scale(1.3);
+}
+.pagination__dot:hover {
+  transform: scale(1.3);
+}
+
+/* Sekcja „O nas” */
+.about {
+  padding: 2rem 0;
+  background-color: var(--green-light);
+  text-align: center;
+  border-radius: 20px; /* delikatne zaokrąglenie */
+  box-shadow: 0 8px 8px rgba(0,0,0,0.1); /* delikatny cień */
+}
+.about h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--green-main);
+}
+.about p {
+  max-width: 800px;
+  text-align: justify;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+
+
+/* Footer */
+.site-footer {
+  background-color: var(--green-dark);  /* ciemna zieleń */
+  color: var(--white);
+  padding: 2rem 0;
+  margin-top: 5rem;
+}
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+}
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 100px;
+}
+
+/* Kontakt */
+.footer__col--mail .contact-item {
+  display: flex;
+  align-items: center;
+}
+.footer__col--mail .contact-item img {
+  width: 34px;
+  margin-right: 0.75rem;
+}
+.footer__col--mail a {
+  color: var(--white);
+  font-size: 1.2rem;
+  display: inline-block;   /* niezbędne, żeby transform działał poprawnie */
+  transition: 0.1s ease;   /* płynne przejście */
+}
+.footer__col--mail a:hover {
+  transform: scale(1.03);
+}
+
+
+.footer__col--tel .contact-item {
+  display: flex;
+  align-items: center;
+}
+.footer__col--tel .contact-item img {
+  width: 34px;
+  margin-right: 0.75rem;
+}
+.footer__col--tel a {
+  color: var(--white);
+  font-size: 1.2rem;
+  display: inline-block;   /* niezbędne, żeby transform działał poprawnie */
+  transition: 0.1s ease;   /* płynne przejście */
+}
+.footer__col--tel a:hover {
+  transform: scale(1.03);
+}
+
+
+.form-button {
+  background-color: var(--green-light);  /* jasna zieleń */
+  color: var(--text-color);                  /* biały tekst */
+  padding: 0.75rem 1.5rem;              /* pionowo/poziomo */
+  border-radius: 0.5rem;                /* delikatne zaokrąglenie */
+  border: none;                         /* bez obramowania */
+  box-shadow: none;                     /* usuń efekt wypukłości */
+  cursor: pointer;                      /* wskaźnik kliknięcia */
+  font-size: 1.1rem;                      /* dostosuj rozmiar tekstu */
+  transition: 0.33s ease;     /* płynna zmiana bg przy hover */
+}
+.form-button:hover {
+  transform: scale(1.03);
+  box-shadow:  0 5px 8px rgba(0, 0, 0, 0.218); /* delikatny cień */
+}
+
+
+/* Form – kontakt */
+.contact-form {
+  margin-top: 6rem;
+  padding: 4rem 0;
+  background-color: var(--green-light);
+  text-align: center;
+  border-radius: 20px; /* delikatne zaokrąglenie */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* delikatny cień */
+}
+.contact-form h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--green-main);
+  text-align: center;
+}
+.contact-form .form-group {
+  margin-bottom: 1rem;
+  margin-left: 6rem;
+  margin-right: 6rem;
+}
+.contact-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--green-main);
+}
+.contact-form .form-button {
+  display: block;
+  background-color: var(--green-main);
+  margin: 2rem auto 0;
+}
+
+
+
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .footer__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer__col {
+    margin-bottom: 1.5rem;
+  }
+}
+
+
+
+
+/* Hamburger Toggle (desktop hidden) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-color);
+}
+
+/* Responsive Mobile Menu */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+  .social {
+    display: none;
+  }
+  .nav__list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    flex-direction: column;
+    transform: translateY(-100%);
+    transform-origin: top center;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+  }
+  .nav.nav--open .nav__list {
+    transform: translateY(0);
+  }
+}
+
+/* Additional Responsive Breakpoints */
+@media (min-width: 769px) {
+  /* Możliwość dalszych stylów dla desktop */
+}

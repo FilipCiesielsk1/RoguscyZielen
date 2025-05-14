@@ -1,0 +1,170 @@
+  <!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roguscy Zieleń</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Roguscy Zieleń – profesjonalne zakładanie ogrodów przy blokach i osiedlach">
+  <meta name="keywords" content="ogrody, zakładanie ogrodów, Roguscy Zieleń, aranżacja zieleni">
+  <meta name="author" content="Roguscy Zieleń">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Roguscy Zieleń">
+  <meta property="og:description" content="Twoje zielone otoczenie – nasza pasja.">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta property="og:url" content="https://twojadomena.pl">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon and App Icons -->
+  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#4caf50">
+
+  <!-- Styles and Scripts -->
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+
+<body>
+  <header role="banner">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">
+        <img src="assets/logo1.webp" alt="Roguscy Zieleń">
+      </a>
+      <nav role="navigation" class="nav">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="o_nas.html" class="nav__link">O nas</a></li>
+          <li class="nav__item dropdown">
+            <a href="#" class="nav__link">Oferta</a>
+            <ul class="dropdown__list">
+              <li><a href="Usługa1.html" class="dropdown__link">Usługa 1</a></li>
+              <li><a href="Usługa2.html" class="dropdown__link">Usługa 2</a></li>
+              <li><a href="Usługa3.html" class="dropdown__link">Usługa 3</a></li>
+            </ul>
+          </li>
+          <li class="nav__item"><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+        </ul>
+      </nav>
+      <a href="https://facebook.com" class="social" target="_blank" rel="noopener noreferrer">
+        <img src="assets/img/facebook.png" alt="Facebook Roguscy Zieleń">
+      </a>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Slider -->
+  <section class="slider">
+    <div class="slides">
+      <div class="slide"><img src="assets/img/slide11.jpg" alt="Opis 1"></div>
+      <div class="slide"><img src="assets/img/slide21.jpg" alt="Opis 2"></div>
+      <div class="slide"><img src="assets/img/slide31.jpg" alt="Opis 3"></div>
+      <div class="slide"><img src="assets/img/slide41.jpg" alt="Opis 4"></div>
+      <div class="slide"><img src="assets/img/slide51.jpg" alt="Opis 5"></div>
+    </div>
+    <!-- Overlay z napisem -->
+    <div class="slider__overlay">
+      Roguscy Zieleń
+    </div>
+      <!-- Kontrolki -->
+    <button class="slider__btn slider__btn--prev" aria-label="Poprzedni slajd">‹</button>
+    <button class="slider__btn slider__btn--next" aria-label="Następny slajd">›</button>
+    <!-- Paginacja -->
+    <div class="slider__pagination">
+      <span class="pagination__dot active"></span>
+      <span class="pagination__dot"></span>
+      <span class="pagination__dot"></span>
+      <span class="pagination__dot"></span>
+      <span class="pagination__dot"></span>
+    </div>
+  </section>
+
+  <!-- Sekcja „O nas” -->
+<main role="main" id="main" class="container">
+  <section class="contact-form">
+    <h2>Formularz kontaktowy</h2>
+    <form id="contact-form" novalidate>
+      <div class="form-group">
+        <label for="name-field">Imię i nazwisko</label>
+        <input
+          type="text"
+          id="name-field"
+          name="name"
+          placeholder="Imię i nazwisko"
+          required
+        >
+      </div>
+      <div class="form-group">
+        <label for="email-field">E-mail</label>
+        <input
+          type="email"
+          id="email-field"
+          name="email"
+          placeholder="Twój e-mail"
+          required
+        >
+      </div>
+      <div class="form-group">
+        <label for="phone-field">Telefon</label>
+        <input
+          type="tel"
+          id="phone-field"
+          name="phone"
+          placeholder="Numer telefonu"
+        >
+      </div>
+      <div class="form-group">
+        <label for="message-field">Wiadomość</label>
+        <textarea
+          id="message-field"
+          name="message"
+          rows="5"
+          placeholder="Twoja wiadomość"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="form-button">Wyślij wiadomość</button>
+    </form>
+  </section>
+</main>
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <!-- Kolumna 1: mail -->
+      <div class="footer__col footer__col--mail">
+        <a href="mailto:kontakt@roguscyzielen.pl">
+          <div class="contact-item">
+            <img src="assets/img/email.png" alt="Email"> 
+            <p>kontakt@roguscyzielen.pl</p>
+          </div>
+        </a>
+      </div>
+      <!-- Kolumna 2: tel -->
+      <div class="footer__col footer__col--tel">
+        <a href="tel:+48123456789">
+          <div class="contact-item">
+            <img src="assets/img/phone.png" alt="Telefon"> 
+            <p>+48 123 456 789</p>
+          </div>
+        </a>
+      </div>
+      <!-- Kolumna 3: form-btn -->
+      <div class="footer__col footer__col--form-button">
+        <div class="contact-item">
+          <a href="kontakt.html#name-field">
+            <button class="form-button">Formularz kontaktowy</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
